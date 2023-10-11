@@ -11,6 +11,8 @@ export async function build(opts = {}) {
       key: readFileSync("localhost+2-key.pem", "utf8"),
       cert: readFileSync("localhost+2.pem", "utf8"),
     },
+
+    keepAliveTimeout: 60000,
   });
 
   app.register(autoload, {

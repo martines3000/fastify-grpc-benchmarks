@@ -1,4 +1,9 @@
-export const SIMPLE_DATA = "Hello world!";
+import { randomBytes } from "crypto";
+
+// 0.05 MiB String with random characters
+export const SIMPLE_DATA = randomBytes(0.05 * 1024 * 1024).toString("hex");
+
+export const PORT = process.env.CALL_PORT;
 
 export const COMPLEX_DATA = {
   credentialSubject: {

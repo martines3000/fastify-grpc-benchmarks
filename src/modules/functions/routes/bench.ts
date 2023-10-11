@@ -2,7 +2,6 @@ import { FastifyInstance } from "fastify";
 import { COMPLEX_DATA, SIMPLE_DATA } from "../../../constants/index.js";
 
 const simpleBenchRequest = (tries: number): { data: string } => {
-  console.log(tries);
   if (tries === 0) {
     return { data: SIMPLE_DATA };
   }
@@ -11,7 +10,6 @@ const simpleBenchRequest = (tries: number): { data: string } => {
 };
 
 const complexBenchRequest = (tries: number): { data: any } => {
-  console.log(tries);
   if (tries === 0) {
     return { data: COMPLEX_DATA };
   }

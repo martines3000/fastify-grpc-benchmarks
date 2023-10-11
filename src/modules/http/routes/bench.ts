@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 
-import { request as fetch } from "undici";
-import { COMPLEX_DATA, SIMPLE_DATA } from "../../../constants/index.js";
+import { fetch } from "undici";
+import { COMPLEX_DATA, PORT, SIMPLE_DATA } from "../../../constants/index.js";
 
 export default async function (fastify: FastifyInstance, opts: any) {
   fastify.get("/bench/simple/:tries", async (request, reply) => {
@@ -12,13 +12,13 @@ export default async function (fastify: FastifyInstance, opts: any) {
     }
 
     const response = await fetch(
-      `https://localhost:3000/http/bench/simple/${--tries}`,
+      `https://localhost:${PORT}/http/bench/simple/${--tries}`,
       {
         method: "GET",
       }
     );
 
-    return await response.body.json();
+    return await response.json();
   });
 
   fastify.get("/bench/complex/:tries", async (request, reply) => {
@@ -29,12 +29,12 @@ export default async function (fastify: FastifyInstance, opts: any) {
     }
 
     const response = await fetch(
-      `https://localhost:3000/http/bench/complex/${--tries}`,
+      `https://localhost:${PORT}/http/bench/complex/${--tries}`,
       {
         method: "GET",
       }
     );
 
-    return await response.body.json();
+    return await response.json();
   });
 }
