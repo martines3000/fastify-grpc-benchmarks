@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpc.bench;
+
+message BenchRequest { string tries = 1; }
+
+message SimpleBenchResponse { string data = 1; }
+message ComplexBenchResponse {
+  map<string, string> credentialSubject = 1;
+  map<string, string> issuer = 2;
+  repeated string type = 3;
+  map<string, string> credentialSchema = 4;
+  repeated string context = 5 [ json_name = "@context" ];
+  string issuanceDate = 6;
+  map<string, string> proof = 7;
+}
+
+service BenchService {
+  rpc Simple(BenchRequest) returns (SimpleBenchResponse) {}
+  rpc Complex(BenchRequest) returns (ComplexBenchResponse) {}
+}
