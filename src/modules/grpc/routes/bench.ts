@@ -1,8 +1,8 @@
 import { createPromiseClient } from "@connectrpc/connect";
 import { createGrpcTransport } from "@connectrpc/connect-node";
 import { FastifyInstance } from "fastify";
-import { BenchService } from "../../../gen/bench_connect.js";
 import { COMPLEX_DATA, PORT, SIMPLE_DATA } from "../../../constants/index.js";
+import { BenchService } from "@buf/martines3000_example-test.connectrpc_es/martines3000/bench/v1/bench_connect.js";
 
 export default async function (fastify: FastifyInstance, opts: any) {
   const transport = createGrpcTransport({
